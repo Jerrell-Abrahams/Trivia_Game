@@ -32,7 +32,7 @@ function App() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const url = await fetch(
+    await fetch(
       `https://opentdb.com/api.php?amount=${numOfQuestion}&category=${category}&difficulty=${difficulty}&type=${type}&encode=url3986`
     )
       .then((response) => {
