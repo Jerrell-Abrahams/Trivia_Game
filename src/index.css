@@ -30,7 +30,7 @@ body {
 
 .game_container {
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
   width: 50%;
   height: 100%;
   margin: 2rem auto;
@@ -70,15 +70,19 @@ select:hover {
   box-shadow: none;
 }
 
+.start_button_container {
+  display: flex;
+  justify-content: right;
+  width: 100%;
+}
+
 .button {
-  width: max-content;
-  height: max-content;
   padding: 0.8rem 2rem;
-  margin: 1rem auto;
+  margin: 1rem 2rem;
   border: none;
   border-radius: 10px;
   background-color: #ff4c29;
-  color: rgb(246, 242, 242);
+  color: rgb(255, 255, 255);
   font-family: "Oswald", sans-serif;
   font-size: 1.3rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

@@ -74,8 +74,9 @@ export default function TriviaMenu({
               <option value={"multiple"}>Multiple Choice</option>
               <option value={"boolean"}>True/False</option>
             </select>
-
-            <button className="button">Start Trivia!</button>
+            <div className="start_button_container">
+              <button className="button">Start Trivia!</button>
+            </div>
           </div>
         </form>
       </div>

@@ -12,7 +12,7 @@ export default function About() {
           <a href="mailto:jerrellabrahams50@gmail.com">
             <button className="contact me_button">Contact me</button>
           </a>
-          <a href="jerrellabrahams.tech">
+          <a href="https://www.jerrellabrahams.tech">
             <button className="website_button">View my Website</button>
           </a>
         </div>
