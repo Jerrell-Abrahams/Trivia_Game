@@ -4,6 +4,7 @@ import Heading from "./Heading.js";
 import TriviaMenu from "./TriviaMenu";
 import QuestionMenu from "./QuestionMenu";
 import Results from "./Results";
+import About from "./About";
 import { useState } from "react";
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
           handleReset={handleReset}
         />
       )}
+      <About />
     </div>
   );
 }
