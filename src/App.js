@@ -4,7 +4,7 @@ import TriviaMenu from "./TriviaMenu";
 import QuestionMenu from "./QuestionMenu";
 import Results from "./Results";
 import About from "./About";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [numOfQuestion, setNumOfQuestion] = useState(5);
@@ -24,7 +24,7 @@ function App() {
     setData([]);
     setQuestionNum(0);
     setUserCorrectAnswers(0);
-    setNoData(false);
+    // setNoData(false);
   }
 
   function updateState() {
@@ -41,14 +41,16 @@ function App() {
         .then((response) => {
           return response.json();
         })
-        .then((data) => {
-          setData(data.results);
+        .then((retrievedData) => {
+          // if (retrievedData.response_code === 1) {
+          //   console.log("got here");
+          //   setNoData(true);
+          //   handleReset();
+          //   return;
+          // }
+          setData(retrievedData.results);
         });
 
-      if (data.length === 0) {
-        setNoData(true);
-        return;
-      }
       updateState();
     } catch (err) {
       alert(err.message);
