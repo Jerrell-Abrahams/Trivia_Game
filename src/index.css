@@ -104,7 +104,7 @@ select:hover {
   background-color: teal;
   padding: 0.3rem 0.8rem;
   font-family: "Ubuntu";
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .about_project:hover {
@@ -114,7 +114,7 @@ select:hover {
 
 .modal_container {
   width: 80%;
-  height: 80%;
+  height: fit-content;
   background-color: #374d5e;
   border-radius: 10px;
   color: white;
@@ -131,21 +131,25 @@ select:hover {
 }
 
 .content_container ul {
-  margin: 1rem;
+  margin: 1rem 0;
+  padding: 0;
+  font-size: 1.2rem;
 }
 
 .content_container li {
   margin: 1rem 0;
+  font-size: 0.9rem;
 }
 
 .content_container p {
   margin: 2rem 0;
+  font-size: 1rem;
 }
 
 .modalCloseButton {
   border: none;
   background-color: transparent;
-  font-size: 2rem;
+  font-size: 1.5rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -164,7 +168,7 @@ select:hover {
 
 .headings {
   font-size: 1.2rem;
-  color: #ff4c29;
+  color: #d44529f2;
   font-weight: bold;
 }
 
@@ -312,11 +316,14 @@ select:hover {
 }
 
 .about_container h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-family: "Ubuntu";
   text-transform: uppercase;
   font-weight: 900;
   color: rgb(136, 134, 134);
+}
+.about_container ol {
+  padding: 0 1rem;
 }
 
 .about_container p {
@@ -361,6 +368,12 @@ select:hover {
   .game_container {
     width: 80%;
   }
+  .content_container li {
+    margin: 1rem 0.7rem;
+  }
+  ol {
+    margin-right: 1rem;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -370,6 +383,12 @@ select:hover {
   }
   .game_container {
     width: 75%;
+  }
+  .content_container li {
+    margin: 1rem 0.7rem;
+  }
+  ol {
+    padding: 0;
   }
 }
 
