@@ -30,6 +30,7 @@ body {
 
 .game_container {
   border: none;
+  position: relative;
   border-radius: 7px;
   width: 50%;
   height: 100%;
@@ -70,6 +71,13 @@ select:hover {
   box-shadow: none;
 }
 
+.no_questions_text {
+  color: rgb(235, 31, 31);
+  font-size: 1rem;
+
+  font-family: "Ubuntu";
+}
+
 .start_button_container {
   display: flex;
   justify-content: right;
@@ -87,6 +95,75 @@ select:hover {
   font-size: 1.3rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: 0.3s ease;
+}
+
+.about_project {
+  border: none;
+  border-radius: 10px;
+  background-color: teal;
+  padding: 0.3rem 0.8rem;
+  font-family: "Ubuntu";
+}
+
+.about_project:hover {
+  background-color: rgb(13, 75, 75);
+  cursor: pointer;
+}
+
+.modal_container {
+  width: 80%;
+  height: 80%;
+  background-color: #374d5e;
+  border-radius: 10px;
+  color: white;
+  position: relative;
+  font-family: "Ubuntu";
+  font-size: 1rem;
+}
+
+.content_container {
+  margin: 3rem;
+}
+.content_container h1 {
+  font-size: 3rem;
+}
+
+.content_container ul {
+  margin: 1rem;
+}
+
+.content_container li {
+  margin: 1rem 0;
+}
+
+.content_container p {
+  margin: 2rem 0;
+}
+
+.modalCloseButton {
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+.close_button {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+.headings {
+  font-size: 1.2rem;
+  color: #ff4c29;
+  font-weight: bold;
 }
 
 .button:hover,

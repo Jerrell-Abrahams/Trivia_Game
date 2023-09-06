@@ -8,6 +8,7 @@ export default function TriviaMenu({
   setCategory,
   setType,
   onHandleSubmit,
+  noData,
 }) {
   return (
     <section className="game_section">
@@ -74,6 +75,9 @@ export default function TriviaMenu({
               <option value={"multiple"}>Multiple Choice</option>
               <option value={"boolean"}>True/False</option>
             </select>
+            {noData ? (
+              <p className="no_questions_text">No questions were available!</p>
+            ) : null}
             <div className="start_button_container">
               <button className="button">Start Trivia!</button>
             </div>

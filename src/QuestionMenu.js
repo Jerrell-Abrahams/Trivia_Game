@@ -8,6 +8,8 @@ export default function QuestionMenu({
   numOfQuestion,
   setShowResults,
   setUserCorrectAnswers,
+  setNoData,
+  handleReset,
 }) {
   const [answerList, setAnswerList] = useState([]);
   const [correct_answer, setCorrectAnswer] = useState(null);
@@ -58,6 +60,9 @@ export default function QuestionMenu({
 
   return (
     <div className="game_container">
+      <button className="close_button" onClick={handleReset}>
+        ❌
+      </button>
       <div>
         <h3 className="question">
           {decodeURIComponent(data[questionNum].question)}

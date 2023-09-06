@@ -1,4 +1,3 @@
-// import logo from "./logo.svg";
 import "./index.css";
 import Heading from "./Heading.js";
 import TriviaMenu from "./TriviaMenu";
@@ -17,6 +16,7 @@ function App() {
   const [showResults, setShowResults] = useState(false);
   const [questionNum, setQuestionNum] = useState(0);
   const [userCorrectAnswers, setUserCorrectAnswers] = useState(0);
+  const [noData, setNoData] = useState(false);
 
   function handleReset() {
     setShowResults(false);
@@ -24,6 +24,7 @@ function App() {
     setData([]);
     setQuestionNum(0);
     setUserCorrectAnswers(0);
+    setNoData(false);
   }
 
   function updateState() {
@@ -33,17 +34,26 @@ function App() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await fetch(
-      `https://opentdb.com/api.php?amount=${numOfQuestion}&category=${category}&difficulty=${difficulty}&type=${type}&encode=url3986`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data.results);
-      });
+    try {
+      await fetch(
+        `https://opentdb.com/api.php?amount=${numOfQuestion}&category=${category}&difficulty=${difficulty}&type=${type}&encode=url3986`
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setData(data.results);
+        });
 
-    updateState();
+      if (data.length === 0) {
+        setNoData(true);
+        return;
+      }
+      updateState();
+    } catch (err) {
+      alert(err.message);
+      return;
+    }
   }
 
   return (
@@ -61,6 +71,7 @@ function App() {
           setDifficulty={setDifficulty}
           setType={setType}
           onHandleSubmit={handleSubmit}
+          noData={noData}
         />
       ) : !showResults ? (
         <QuestionMenu
@@ -70,6 +81,8 @@ function App() {
           numOfQuestion={numOfQuestion}
           setShowResults={setShowResults}
           setUserCorrectAnswers={setUserCorrectAnswers}
+          handleReset={handleReset}
+          setNoData={setNoData}
         />
       ) : (
         <Results
