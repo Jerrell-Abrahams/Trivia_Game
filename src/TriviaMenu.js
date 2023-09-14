@@ -9,6 +9,9 @@ export default function TriviaMenu({
   setType,
   onHandleSubmit,
   noData,
+  error,
+  isLoading,
+  setError,
 }) {
   return (
     <section className="game_section">
@@ -18,7 +21,10 @@ export default function TriviaMenu({
             <label>Number of Questions:</label>
             <select
               value={numOfQuestion}
-              onChange={(e) => setNumOfQuestion(Number(e.target.value))}
+              onChange={(e) => {
+                setNumOfQuestion(Number(e.target.value));
+                setError(false);
+              }}
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
@@ -29,7 +35,10 @@ export default function TriviaMenu({
             <label>Select Category:</label>
             <select
               value={category}
-              onChange={(e) => setCategory(Number(e.target.value))}
+              onChange={(e) => {
+                setCategory(Number(e.target.value));
+                setError(false);
+              }}
             >
               <option value={0}>Any Category</option>
               <option value={9}>General Knowledge</option>
@@ -75,11 +84,13 @@ export default function TriviaMenu({
               <option value={"multiple"}>Multiple Choice</option>
               <option value={"boolean"}>True/False</option>
             </select>
-            {noData ? (
+            {error ? (
               <p className="no_questions_text">No questions were available!</p>
             ) : null}
             <div className="start_button_container">
-              <button className="button">Start Trivia!</button>
+              <button className="button">
+                {isLoading ? "Loading..." : "Start Trivia!"}
+              </button>
             </div>
           </div>
         </form>

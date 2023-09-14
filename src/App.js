@@ -17,6 +17,8 @@ function App() {
   const [questionNum, setQuestionNum] = useState(0);
   const [userCorrectAnswers, setUserCorrectAnswers] = useState(0);
   const [noData, setNoData] = useState(false);
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleReset() {
     setShowResults(false);
@@ -25,6 +27,7 @@ function App() {
     setQuestionNum(0);
     setUserCorrectAnswers(0);
     // setNoData(false);
+    setError(false);
   }
 
   function updateState() {
@@ -35,6 +38,7 @@ function App() {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       await fetch(
         `https://opentdb.com/api.php?amount=${numOfQuestion}&category=${category}&difficulty=${difficulty}&type=${type}&encode=url3986`
       )
@@ -42,18 +46,17 @@ function App() {
           return response.json();
         })
         .then((retrievedData) => {
-          // if (retrievedData.response_code === 1) {
-          //   console.log("got here");
-          //   setNoData(true);
-          //   handleReset();
-          //   return;
-          // }
+          console.log(retrievedData);
+          if (retrievedData.response_code === 1) {
+            throw new Error("No result from API");
+          }
           setData(retrievedData.results);
+          setIsLoading(false);
         });
-
       updateState();
     } catch (err) {
-      alert(err.message);
+      setError(true);
+      setIsLoading(false);
       return;
     }
   }
@@ -74,6 +77,9 @@ function App() {
           setType={setType}
           onHandleSubmit={handleSubmit}
           noData={noData}
+          error={error}
+          isLoading={isLoading}
+          setError={setError}
         />
       ) : !showResults ? (
         <QuestionMenu
